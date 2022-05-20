@@ -245,3 +245,26 @@ To observe the input and output topics:
 ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic string-output --from-beginning
 ```
 
+## session window stream service example
+
+Uses a SessionWindow to capture the events/msgs in a transaction.
+SessionWindow has a timeout to timeout a transaction/session.
+
+Topics:
+
+```bash
+./bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic sessionwindow-stream-input
+```
+```bash
+./bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic sessionwindow-stream-output
+```
+
+Producer and Consumer
+
+```bash
+./bin/kafka-console-producer.sh --broker-list localhost:9092     --topic window-stream-input     --property "parse.key=true"     --property "key.separator=:"
+```
+
+```bash
+./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092     --topic window-stream-output     --from-beginning     --formatter kafka.tools.DefaultMessageFormatter     --property print.key=true     --property print.value=true     --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer     --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+``` 
