@@ -1,0 +1,16 @@
+CONSUMER sessionwindow-consumer-input
+topic: sessionwindow-stream-input
+partitions: 0
+from: 1
+
+CONSUMER sessionwindow-consumer-output
+topic: sessionwindow-stream-output
+partitions: 0
+from: 1
+
+PRODUCER sessionwindow-producer
+topic: sessionwindow-stream-input
+key: gerry
+gerry
+
+###
