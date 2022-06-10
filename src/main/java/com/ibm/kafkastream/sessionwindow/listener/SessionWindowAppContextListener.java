@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ibm.kafkastream.sessionwindow.service.SessionWindowStreamService;
 
+@WebListener
 public class SessionWindowAppContextListener implements ServletContextListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SessionWindowAppContextListener.class);
